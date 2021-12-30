@@ -4,7 +4,7 @@ void	send_char(int pid, char a)
 {
 	printf("c: send %c\n", a);
 	int i = 7;
-	while(i >= 0)
+	while (i >= 0)
 	{
 		if (a >> i & 1)
 			kill(pid, SIGUSR1);	
@@ -19,7 +19,7 @@ void	send_str(char **argv)
 {
 	printf("s: send %s\n", argv[2]);
 	
-	while(*argv[2])
+	while (*argv[2])
 	{
 		send_char(atoi(argv[1]), *argv[2]);
 		++(argv[2]);
@@ -28,7 +28,7 @@ void	send_str(char **argv)
 
 int main(int argc, char **argv)
 {
-	if(argc != 3)
+	if (argc != 3)
 		exit(1);
 	send_str(argv);
 }
