@@ -1,0 +1,54 @@
+やること
+----------
+string貯めなきゃいけないじゃんw　めんどくさ
+→まずstrlenをサーバーに報告してアロケートしてもらう
+→そして、受け入れ先に順次収容
+
+signal、killの仕様復習する
+
+超長いのを送る途中でダウンとか、ディフェンス
+
+１００strlen１秒以内
+
+best practice 
+kill sigactionとか同時にwriteを呼び出すとゴミ
+
+----------
+
+gloval variableは構造体で良さそうだ
+
+たまにバグる原因を解明する
+なんでバグんや
+serverがわなきはしている
+siaction見直す
+エラー処る
+人に聞く
+
+pdf見直す
+
+clean explained codec
+https://github.com/mlanca-c/Minitalk/blob/main/client.c
+
+makefileを作ろう　あとで
+
+.hつくた
+
+勉強すること：
+pdf読んで仕様確認
+bit演算
+sigaction
+
+mini_talkだいたいできてる気がする　誰かの話を聞く
+
+つまり、stringを構成している文字を、それぞれ八個のシグナルを送ることで表現　０＝sigusr1 1=sigusr2
+１００文字なら八百回送って、
+それを文字に直せばいいのか
+
+sigkillで送るやつやるかー
+
+12/26
+
+sigactioniで遊ぶかw
+
+killで最初に
+kill0 pid 0か１送る

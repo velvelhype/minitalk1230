@@ -1,51 +1,31 @@
 #include "minitalk.h"
 
-int     char_stock = 0;
-int		count  = 0;
-
+t_counts	g_counts;
 
 void    handler(int signum)
 {
 	if(signum == SIGUSR1)
-		char_stock += 1;
-	count++;
+		g_counts.char_stock += 1;
+	g_counts.count++;
+	if (g_counts.count != 8)
+		g_counts.char_stock <<= 1;
+	else
+	{
+		write(1, &(g_counts.char_stock), 1);
+	    g_counts.count = 0;
+	    g_counts.char_stock = 0;
+	}
 }
 
 int main()
 {
-	printf("%d\n", getpid());
-	struct sigaction sa_signal;
-	sigset_t	mask;
+	int	pid;
 
-	// sigemptyset(&mask);
-	// sigaddset(&mask, SIGINT);
-	// sigaddset(&mask, SIGQUIT);
-
-	memset(&sa_signal, 0, sizeof(sa_signal));
-	sa_signal.sa_handler = handler;
-	sa_signal.sa_flags = SA_RESTART;
-	// sa_signal.sa_mask = mask;
-	if (sigaction(SIGUSR1, &sa_signal, NULL) < 0)
-	{
-		perror("sigaction");
-		exit(1);
-	}
-	if (sigaction(SIGUSR2, &sa_signal, NULL) < 0)
-	{
-		perror("sigaction");
-		exit(1);
-	}
+	pid = getpid();
+	write(1, "\n", 1);
+	ft_putnbr_fd(pid, 1);
+	signal(SIGUSR1, handler);
+	signal(SIGUSR2, handler);
 	while (1) 
-	{
 		pause();
-		// printf("count is %d\n", count);
-		if (count != 8)
-			char_stock <<= 1;
-		else
-		{
-			write(1, &char_stock, 1);
-		    count = 0;
-		    char_stock = 0;
-		}
-	}
 }
