@@ -1,19 +1,52 @@
 やること
-----------
-string貯めなきゃいけないじゃんw　めんどくさ
-→まずstrlenをサーバーに報告してアロケートしてもらう
-→そして、受け入れ先に順次収容
+-------
+usleep(100)
+実行時間を計ろう 
+１０００秒
 
-signal、killの仕様復習する
+bonusはちゃんと作ろう
+
+atoiのアルファベットはじくやつ
+00009とか弾く
+
+＝＝＝＝＝＝＝＝
+shigecord
+
+一文字ごとでも良さそ
+
+client 9行目
+−１で試せば対策できるかためせる
+
+kill -1 0を切った方がいい
+
+ヌルを最後に遅ればわかりやすい
+
+一回見直そう全てを
+pdfみて、他人の実装見て判断
+
+楽しむんやで
+
+普通にバグってるのでボーナス対応とstrlen方式の実装
+limits.hかunistd.hに限界量描かれてるのでチェック
+sizetならいいだろ
+
+The server confirms every signal received by sending a signal to the client.
 
 超長いのを送る途中でダウンとか、ディフェンス
 
-１００strlen１秒以内
+signal、killの仕様復習する
 
-best practice 
+best practice
 kill sigactionとか同時にwriteを呼び出すとゴミ
 
 ----------
+
+１００strlen１秒以内
+
+string貯めなきゃいけないじゃんw　めんどくさ
+→まずstrlenをサーバーに報告してアロケートしてもらう
+→そして、受け入れ先に順次収容
+->放置
 
 gloval variableは構造体で良さそうだ
 

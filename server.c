@@ -22,8 +22,8 @@ int main()
 	int	pid;
 
 	pid = getpid();
-	write(1, "\n", 1);
 	ft_putnbr_fd(pid, 1);
+	write(1, "\n", 1);
 	signal(SIGUSR1, handler);
 	signal(SIGUSR2, handler);
 	while (1) 
