@@ -2,7 +2,7 @@
 
 void	send_char(int pid, char a)
 {
-	printf("c: send %c\n", a);
+//	printf("c: send %c\n", a);
 	int i;
 
 	i = 7;
@@ -16,7 +16,7 @@ void	send_char(int pid, char a)
 			kill(pid, SIGUSR1);	
 		else
 			kill(pid, SIGUSR2);	
-		usleep(1000);
+		usleep(100);
 		i--;
 	}
 }
