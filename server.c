@@ -2,9 +2,9 @@
 
 t_counts	g_counts;
 
-void    handler(int signum)
+void	handler(int signum)
 {
-	if(signum == SIGUSR1)
+	if (signum == SIGUSR1)
 		g_counts.char_stock += 1;
 	g_counts.count++;
 	if (g_counts.count != 8)
@@ -12,12 +12,12 @@ void    handler(int signum)
 	else
 	{
 		write(1, &(g_counts.char_stock), 1);
-	    g_counts.count = 0;
-	    g_counts.char_stock = 0;
+		g_counts.count = 0;
+		g_counts.char_stock = 0;
 	}
 }
 
-int main()
+int	main(void)
 {
 	int	pid;
 
@@ -26,6 +26,6 @@ int main()
 	write(1, "\n", 1);
 	signal(SIGUSR1, handler);
 	signal(SIGUSR2, handler);
-	while (1) 
+	while (1)
 		pause();
 }
